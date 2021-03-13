@@ -1,3 +1,7 @@
+/**
+ * Credit to p5.js and the Coding Train. 
+ */
+
 let myFont;
 let x;
 let y;
