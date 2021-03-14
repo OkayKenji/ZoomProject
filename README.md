@@ -21,3 +21,4 @@ To do this:
 
 These directions should work as of March 2021. 
 
+If you want to just play around with the app. Go to https://okaykenji.github.io/ZoomProject/. Open browser's console (Usually F12). Enter "nameToDisplay = "yourTextHere". You can replace 'yourTextHere' with whatever you want and press enter. Don't enter anything sensitive (I won't see it whichever way - its just good practice). Do not put this link in OBS as you will not be able to edit the text displayed. 
