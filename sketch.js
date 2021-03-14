@@ -20,6 +20,8 @@ let ratey;
 let crickets = false;
 let count = 0; 
 let secret = false;
+let originalHeight;
+let orignialWidth;
 
 //loads font
 function preload() {
@@ -47,11 +49,15 @@ function setup() {
   //sets intial text location as center
   x = windowWidth/2;
   y = windowHeight/2;
-  
+  originalHeight = windowHeight;
+  orignialWidth =windowWidth;
+
   //other presets that only have to be 
   //set once
   rectMode(CENTER);
   textAlign(CENTER);
+
+
   
   fill(255, 255, 255);
   textSize(85);
@@ -88,14 +94,14 @@ function draw() {
     assignAName();
   }
 
-  if (x>windowWidth) {
+  if (x>orignialWidth) {
     fill(random(small,255), random(small,255), random(small,255));
     addx = !addx; 
     if (secret)
     assignAName();
   }
   
-  if (y>windowHeight) {
+  if (y>originalHeight) {
     fill(random(small,255), random(small,255), random(small,255));
     addy = !addy;
     if (secret)
@@ -149,4 +155,5 @@ function assignAName() {
   let r = Math.random()*arrStuff.length;
   r = Math.trunc(r);
   nameToDisplay = arrStuff[r];
+
 }
