@@ -17,7 +17,8 @@ let ratex;
 let ratey; 
 let crickets = false;
 let count = 0; 
-
+let originalHeight;
+let orignialWidth;
 
 //loads font
 function preload() {
@@ -44,6 +45,8 @@ function setup() {
   //sets intial text location as center
   x = windowWidth/2;
   y = windowHeight/2;
+  originalHeight = windowHeight;
+  orignialWidth =windowWidth;
   
   //other presets that only have to be 
   //set once
@@ -81,12 +84,12 @@ function draw() {
     addy = !addy; 
   }
 
-  if (x>windowWidth) {
+  if (x>orignialWidth) {
     fill(random(small,255), random(small,255), random(small,255));
     addx = !addx; 
   }
   
-  if (y>windowHeight) {
+  if (y>originalHeight) {
     fill(random(small,255), random(small,255), random(small,255));
     addy = !addy;
   }
