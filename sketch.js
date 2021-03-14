@@ -3,6 +3,8 @@
  * concepts seen here. (though this project was devloped indepently)
  * 
  * And to whoever invented the bouncing DVD logo. 
+ * 
+ * Edited version for website. 
  */
 
 let nameToDisplay = "nameHere"; //edit this line
@@ -17,7 +19,7 @@ let ratex;
 let ratey; 
 let crickets = false;
 let count = 0; 
-
+let secret = false;
 
 //loads font
 function preload() {
@@ -26,7 +28,8 @@ function preload() {
 }
 
 function setup() {
-  
+  assignAName(); 
+
   //change how it moves around the screen;
   ratex = Math.random();
   ratey = Math.sqrt(2-ratex*ratex)
@@ -74,21 +77,29 @@ function draw() {
   if (x<0) {
     fill(random(small,255), random(small,255), random(small,255));
     addx = !addx; 
+    if (secret)
+    assignAName();
   }
   
   if (y<0) {
     fill(random(small,255), random(small,255), random(small,255));
     addy = !addy; 
+    if (secret)
+    assignAName();
   }
 
   if (x>windowWidth) {
     fill(random(small,255), random(small,255), random(small,255));
     addx = !addx; 
+    if (secret)
+    assignAName();
   }
   
   if (y>windowHeight) {
     fill(random(small,255), random(small,255), random(small,255));
     addy = !addy;
+    if (secret)
+    assignAName();
   }
   
   //hmmm Up,Up,Down,Down,Left,Left,Right,Right,b,a,enter
@@ -97,6 +108,7 @@ function draw() {
     textSize(40);
     text('*crickets* *crickets* *crickets*', windowWidth/2, windowHeight-5);
     textSize(85);
+    
     }
     count++;
   }
@@ -112,25 +124,29 @@ function keyPressed() {
   if (arr[counter]==match[counter]) {
     //console.log("Match");
     counter++;
+    if (arr.length==11) {
+      //console.log("Win");
+      crickets = !crickets;
+      arr = []; 
+      counter=0;
+    }   
   } else  {
     arr = [];
     counter=0;
   }
-  if (arr.length==11) {
-    //console.log("Win");
-    crickets = !crickets;
-    arr = []; 
-    counter=0;
-  } 
 
   if (!crickets)
     count = 0;
-   // arr = []; 
+  if (key=="~") 
+   secret=!secret;
 
-  if (arr.length>11) {
-    counter=0;
-    arr = []; 
-  }
- // console.log(arr);
+}
 
+function assignAName() {
+  //some names of Wikipedia/Google
+  let arrStuff = ["Bob Behnken","Doug Hurley","Michael Hopkins","Victor \"Ike\" Glover","Shannon Walker","Soichi Noguchi","Kate Rubins","Sergey Ryzhikov","Sergey Kud-Sverchkov","Yuri Gagarin","Valentina Tereshkova","Alan Shepard","John Glenn","Neil Armstrong","Dorothy Vaughan","Katherine Johnson", "Mary Jackson","Peter Beck","Tory Bruno","Stéphane Israël","Elon Musk","Jeff \"Who\" Bezos","Dan Hart","Jim Bridenstine","Tim Ellis","Chris Kemp","Bob Smith","Kathy Lueders","Scott Manley","Tim Dodd","Endeavour","Resilience","Curiosity","Hope","Ingenuity","InSight","Opportunity","Perseverance","Phoenix","Rosetta","Sojourner","Spirit"];
+  
+  let r = Math.random()*arrStuff.length;
+  r = Math.trunc(r);
+  nameToDisplay = arrStuff[r];
 }
