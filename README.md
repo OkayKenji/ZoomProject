@@ -1,4 +1,6 @@
 # ZoomProject
+This is the version used for the website version. Please download the main branch instead. 
+
 You know how on Zoom when another person has their camera off it just displays their name?
 
 Well, this application tries to recreate this with one major difference. (other than the font and background is off - it’s hard to find free fonts!) 
